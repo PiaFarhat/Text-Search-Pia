@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name = "viewport" content ="width=device-width, inital-scale =" 1.0/>
+        <title>Text Search</title>
+        <link rel="stylesheet" href ="style.css"/>
+    </head>
+
+    <body>
+        <div id="app">
+            <main class="container">
+                <section class="search-section">
+                    <h1>Search</h1>
+
+                    <div class="search-box">
+                        <input type="text" v-model="searchText" placeholder="Search Articles"/>
+                        <button v-if="searchText" @click="clearSearch">
+                            x
+                        </button>
+            
+
+                    </div>
+                    <p class="count">
+                        {{filteredArticles.length}} posts were found.
+                    </p>
+                    <article v-for="article in filteredArticles" :key="article.id" class="article">
+                        <h2 v-html="highlightText(article.title)"></h2>
+                        <p class="date">{{article.date}}</p>
+                        <p v-html="highlightText(article.body)"></p>
+                    </article>
+                </section>
+
+                
+                       
+                            <aside class="profile-card">
+                            <p>
+                            <strong>
+                                bitsofcode
+                            </strong>
+                            Articles on frontend development.
+                            All Articles are written by 
+                            <a href="#"> IRE Aderinokun</a>,
+                            Frontend Developer and User Interface Designer.
+                        </p>
+
+                        <button>Follow @ireaderinokun</button>
+                        <span>19.1K followers</span>
+                        </aside>
+            </main>
+        </div>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
